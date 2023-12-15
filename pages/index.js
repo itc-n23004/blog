@@ -1,6 +1,6 @@
 import Hero from 'components/hero'
 
-const Home = () => {
-  return <Hero />
+const Cube = () => {
+  return <Hero title='CUBE' subtitle='アウトプットしていくサイト' />
 }
-export default Home
+export default Cube
