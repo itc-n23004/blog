@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function Nav () {
+const Nav = () => {
   return (
     <nav>
       <ul>
@@ -17,3 +17,4 @@ export default function Nav () {
     </nav>
   )
 }
+export default Nav
