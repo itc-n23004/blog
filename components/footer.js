@@ -10,7 +10,6 @@ const Footer = () => {
         <div className={styles.flexContainer}>
           <Logo />
           <Social />
-          [ソーシャル]
         </div>
       </Container>
     </footer>

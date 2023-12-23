@@ -1,5 +1,4 @@
 import styles from 'styles/social.module.css'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faTwitter,
@@ -7,7 +6,7 @@ import {
   faGithub
 } from '@fortawesome/free-brands-svg-icons'
 
-export default function Social () {
+const Social = ({ iconSize = 'initial' }) => {
   return (
     <ul className={styles.list}>
       <li>
@@ -31,3 +30,4 @@ export default function Social () {
     </ul>
   )
 }
+export default Social
