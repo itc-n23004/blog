@@ -11,7 +11,12 @@ import {
   TwoColumnMain,
   TwoColumnSidebar
 } from 'components/two-column'
+<<<<<<< HEAD
 >>>>>>> chapter4
+=======
+import Image from 'next/image'
+import eyecathc from 'images/about.jpg'
+>>>>>>> chapter5
 
 const About = () => {
   const props = { title: 'About', subtitle: 'About development activities' }
@@ -49,6 +54,16 @@ const About = () => {
       <Contact />
 =======
       <Hero title='About' subtitle='Aboutdevelopment activities' />
+      <figure>
+        <Image
+          src={eyecathc}
+          alt=''
+          layout='responsive'
+          sizes='(min-width: 1152px) 1152px, 100vw'
+          priority
+          placeholder='blur'
+        />
+      </figure>
       <TwoColumn>
         <TwoColumnMain>
           <PostBody>
