@@ -1,6 +1,4 @@
 import { getPostBySlug } from 'lib/api'
-import { extractText } from 'lib/extract-text'
-import Meta from 'components/meta'
 import Container from 'components/container'
 import PostHeader from 'components/post-header'
 import PostBody from 'components/post-body'
@@ -9,9 +7,11 @@ import {
   TwoColumnMain,
   TwoColumnSidebar
 } from 'components/two-column'
-import ConvertBody from 'components/convert-bodoy'
-import PostCategories from 'components/post-categories'
 import Image from 'next/image'
+import PostCategories from 'components/post-categories'
+import ConvertBody from 'components/convert-body'
+import { extractText } from 'lib/extract-text'
+import Meta from 'components/meta'
 
 const Schedule = ({
   title,
@@ -39,7 +39,7 @@ const Schedule = ({
             layout='responsive'
             width={eyecatch.width}
             height={eyecatch.height}
-            sizes='(min-width: 1152px) 1152px, 100 vw'
+            sizes='(min-width: 1152px) 1152px, 100vw'
             priority
           />
         </figure>
@@ -58,8 +58,9 @@ const Schedule = ({
     </Container>
   )
 }
+export default Schedule
 
-const getStaticProps = async () => {
+export async function getStaticProps () {
   const slug = 'schedule'
 
   const post = await getPostBySlug(slug)
@@ -75,5 +76,3 @@ const getStaticProps = async () => {
     }
   }
 }
-export { getStaticProps }
-export default Schedule
