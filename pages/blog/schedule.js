@@ -62,9 +62,9 @@ export default Schedule
 
 export async function getStaticProps () {
   const slug = 'schedule'
-
   const post = await getPostBySlug(slug)
   const description = extractText(post.content)
+
   return {
     props: {
       title: post.title,
@@ -72,7 +72,7 @@ export async function getStaticProps () {
       content: post.content,
       eyecatch: post.eyecatch,
       categories: post.categories,
-      description: description
+      dedcription: description
     }
   }
 }
