@@ -1,4 +1,4 @@
-import { getPostBySlug } from 'lib/api'
+import { getPostBySlug, getAllSlugs } from 'lib/api'
 import Container from 'components/container'
 import PostHeader from 'components/post-header'
 import PostBody from 'components/post-body'
@@ -9,7 +9,6 @@ import {
 } from 'components/two-column'
 import Image from 'next/image'
 import { getPlaiceholder } from 'plaiceholder'
-// ローカルの代替アイキャッチ画像
 import { eyecatchLocal } from 'lib/constants'
 import PostCategories from 'components/post-categories'
 import ConvertBody from 'components/convert-body'
@@ -64,9 +63,12 @@ const Schedule = ({
   )
 }
 export default Schedule
+
 export async function getStaticPaths () {
+  const allSlugs = await getAllSlugs()
+
   return {
-    paths: ['/blog/schedule', '/blog/music', '/blog/micro'],
+    paths: allSlugs.map(({ slug }) => `/blog/${slug}`),
     fallback: false
   }
 }
