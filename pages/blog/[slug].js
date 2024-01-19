@@ -11,8 +11,10 @@ import Image from 'next/image'
 import { getPlaiceholder } from 'plaiceholder'
 import { eyecatchLocal } from 'lib/constants'
 import PostCategories from 'components/post-categories'
+import Pagination from 'components/pagination'
 import ConvertBody from 'components/convert-body'
 import { extractText } from 'lib/extract-text'
+import { prevNextPost } from 'lib/prev-next-post'
 import Meta from 'components/meta'
 
 const Schedule = ({
@@ -21,7 +23,9 @@ const Schedule = ({
   content,
   eyecatch,
   categories,
-  description
+  description,
+  prevPost,
+  nextPost
 }) => {
   return (
     <Container>
@@ -58,6 +62,20 @@ const Schedule = ({
             <PostCategories categories={categories} />
           </TwoColumnSidebar>
         </TwoColumn>
+
+        <Pagination
+          prevText={prevPost.title}
+          prevUrl={`/blog/${prevPost.slug}`}
+          nextText={nextPost.title}
+          nextUrl={`/blog/${nextPost.slug}`}
+        />
+
+        <div>
+          {prevPost.title} {prevPost.slug}
+        </div>
+        <div>
+          {nextPost.title} {nextPost.slug}
+        </div>
       </article>
     </Container>
   )
@@ -82,6 +100,9 @@ export async function getStaticProps (context) {
   const { base64 } = await getPlaiceholder(eyecatch.url)
   eyecatch.blurDataURL = base64
 
+  const allSlugs = await getAllSlugs()
+  const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
+
   return {
     props: {
       title: post.title,
@@ -89,7 +110,9 @@ export async function getStaticProps (context) {
       content: post.content,
       eyecatch,
       categories: post.categories,
-      dedcription: description
+      dedcription: description,
+      prevPost: prevPost,
+      nextPost: nextPost
     }
   }
 }
