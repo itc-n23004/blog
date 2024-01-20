@@ -40,6 +40,7 @@ const Schedule = ({
         <PostHeader title={title} subtitle='Blog Article' publish={publish} />
         <figure>
           <Image
+            kay={eyecatch.url}
             src={eyecatch.url}
             alt=''
             layout='responsive'
